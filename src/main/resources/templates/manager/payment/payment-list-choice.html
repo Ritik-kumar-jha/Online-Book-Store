@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:insert="/manager/top"></div>
+<body class='bgi'>
+  <div class='dv'>
+   <table style='margin-left: auto;margin-right: auto'>
+    <tr>
+     <td class='tatd'><form><a href='fulllist' class='btl' style='margin-left:2vw'>Full list</a></form></td>
+     <td class='tatd'><form action='userwise'>
+   		<select style='margin-left:2vw;font-size:1.8vw' name='userid'>
+       		<option th:each="userid:${list}" th:value="${userid}" th:text="${userid}"></option>
+     	</select>
+     	<button class='btl' style='margin-rught:2vw'>User wise list</button>
+     </form></td>
+   	 <td class='tatd'><form>
+   	 	<a href='datewise' class='btl' style='margin-left:2vw'>Date wise list</a></form>
+   	 </td>
+  </tr>
+  </table>
+  </div>
+  <div class='dv'>
+   <a class='btl' href='/manager/home' style='background-color:orange'>Back</a>
+  </div>
+ </body>
+ </html>

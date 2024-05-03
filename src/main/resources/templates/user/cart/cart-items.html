@@ -1,0 +1,50 @@
+<html   xmlns:th="http://www.thymeleaf.org">
+ <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ </head>
+ <div th:insert="/user/top"></div>
+ <body class='bgi'>
+  <div class='container'>
+    <div class='card col-md-10 mx-auto'>
+     <div class='card-body'>
+      <form action="/cart/checked">
+        <div class='dvv' th:if="${list.empty}">
+   		  <label class='lah' style='color:red'>There is no book in Cart</label>
+        </div>
+        <div th:if="${!list.empty}" class='scrollit'>
+          <table class='table la'>
+   		   <thead>
+    		  <tr><th>Mark</th><th>Book Id</th><th>Title</th><th>Price</th>
+    		  <th style='color:magenta'>Action</th></tr>
+           </thead>
+           <tbody>
+    		<tr th:each="cart:${list}">
+    			<td><input type='checkbox' name="cb" th:value="${cart.bookid}" onclick="mark(this)"></td>
+     			<td th:text="${cart.bookid}"></td>
+     			<td th:text="${cart.title}"></td>
+     			<td th:text="${'&#8377;'+cart.price}"></td>
+     			<td>
+      			 <a th:href="@{/purchase/buybook(bid=${cart.bookid})}">Order |</a>
+      			 <a th:href="@{/cart/remove(cartid=${cart.cartid})}" onclick="return confirm('Are you sure to remove?')">Remove</a>
+     			</td>
+    		</tr>
+   		  </tbody>
+        </table>
+       </div>
+       <div align='center' th:if="${!list.empty}" >
+         <b style='margin-right:8vw' class='la'>Total cost</b>
+         <b class='la' th:text="${'&#8377;'+#aggregates.sum(list.![price])}"></b>
+       </div>
+       <div align='center' th:if="${!list.empty}" >
+         <button class='la' id='oc' style='cursor:pointer' name="bt" value="oc" disabled="disabled">Order Checked</button>
+   	     <button class='la' id='rc' style='cursor:pointer' name="bt" value="rc" disabled="disabled" onclick="return confirm('Are you sure to remove selected books?')">Remove Checked</button>
+       </div>
+    </form>
+    </div>
+   </div>
+   <div class='dvv'>
+     <a class='btl' href='/user/home' style='background-color:orange'>Home</a>
+   </div>
+  </div>
+ </body>
+ </html>

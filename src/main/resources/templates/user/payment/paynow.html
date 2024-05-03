@@ -1,0 +1,65 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+<body class='bgi'>
+<div th:insert="/user/top"></div>
+<form action="/payment/card/validate" th:object="${c}">
+<div align='center'>
+ <div style='width:40%;margin:10px;padding:15px;border:4px solid silver;background-color:white'>
+   <table style='width:90%;margin-left:auto;margin-right:auto;font-size:1.5vw'>
+     <tr>
+      <td colspan="2" align="center" class='tatd la' style='color:green;font-size:1.8vw'><b>
+        Amount to be paid:</b>&#8377;<label th:text="${paid}"></label>
+        <input type='hidden' name='total' th:value="${paid}">
+        <input type='hidden' name='bookid' th:value="${bid}">
+       </td>
+     </tr>
+     <tr>
+       <td class='tatd LA' colspan="2">
+         <b>Card Holder name</b><br>
+	     <input type='text' value="1234678912346789" th:field='*{holder}' class='tbb' style='width:100%'>
+		 <label style='color:red' th:text="${holdermsg}"></label>
+	   </td>
+     </tr>
+     <tr>
+       <td class='tatd' colspan="2">
+         <b>Card Number</b><br>
+	     <input type='text' onkeypress="return allowDigits(event,this,16)" th:field='*{card}' class='tbb' style='width:100%'>
+	     <label style='color:red' th:text="${cardmsg}"></label>
+	   </td>
+     </tr>
+     <tr>
+     <td class='tatd la' style='width:60%'>
+      <b>Expiration Date</b><br>
+	  <select class='la' style='height:3vw' th:field='*{month}'>
+	  	 <option value="1">January</option><option value="2">February</option><option value="3">March</option>
+	  	 <option value="4">April</option><option value="5">May</option><option value="6">June</option>
+	  	 <option value="7">July</option><option value="8">August</option><option value="9">September</option>
+	  	 <option value="10">October</option><option value="11">Novermber</option><option value="12">December</option>
+	  	</select>
+	  	<select class='la' style='height:3vw' th:field='*{year}'>
+	  	 <option value="2022">2022</option><option value="2023">2023</option>
+	  	 <option value="2024">2024</option><option value="2025">2025</option>
+	  	 <option value="2026">2026</option><option value="2027">2027</option>
+	  	 <option value="2028">2028</option><option value="2029">2029</option>
+	  	 <option value="2030">2030</option>
+	  	</select>
+	  	<label style='color:red' th:text="${expmsg}"></label>
+	  </td>
+	  <td class='tatd la' style='width:40%'>
+	     <b>CVV</b><br>   
+	  	 <input type='text' th:field='*{cvv}' onkeypress="return allowDigits(event,this,4)" name='cvv' class='tbb' style='width:100%'>
+	  	 <label style='color:red' th:text="${cvvmsg}"></label>
+	  </td>
+     </tr>
+     <tr><td colspan="2" class='tatd'></td></tr>
+     <tr>
+      <td class='tatd' colspan="2">
+      	<button class='btr' style='width:100%'>Confirm Pay</button>
+      </td>
+     </tr>
+   </table>
+ </div>
+ <input type='button' class='btr' style='background-color:orange' onclick="history.back()" value='Cancel'>
+</div>
+</form>
+</body>
+</html>

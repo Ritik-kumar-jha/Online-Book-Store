@@ -1,0 +1,60 @@
+<html   xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ </head>
+ <body class='bgi'>
+  <form>
+  <div th:insert="/manager/top"></div>
+  <div class='container'>
+  <div class='card'>
+  <div th:if="${!list.empty}" class='card-header'>
+    <div th:insert="manager/manage/pagination"></div>
+  </div>
+  <div class='card-body'>
+  <div class='dvv' th:if="${list.empty}">
+   <label class='lah' style='color:green'>Sorry no book</label>
+  </div>
+  <div th:if="${!list.empty}">
+  <table class='table'>
+   <thead>
+    <tr>
+     <th class='tdr'>Book</th>
+     <th class='tdr'>Title</th>
+     <th class='tdr'>Author</th>
+     <th class='tdr'>Category</th>
+     <th class='tdr'>Publisher</th>
+     <th class='tdr'>Copies</th>
+     <th class='tdr'>Price</th>
+     <th class='tdr'>Stock</th>
+     <th class='tdr' style='color:magenta'>Action</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr th:each="book:${list}">
+     <td class='tdr' th:text="${book.bid}"></td>
+     <td class='tdr' th:text="${book.title}"></td>
+     <td class='tdr' th:text="${book.author}"></td>
+     <td class='tdr'><a th:href="@{/manager/category/details(cid=${book.category})}" th:text="${book.category}"></a></td>
+     <td class='tdr'><a th:href="@{/manager/publisher/details(pid=${book.publisher})}" th:text="${book.publisher}"></a></td>
+     <td class='tdr' th:text="${book.copies}"></td>
+     <td class='tdr' th:text="${book.price}"></td>
+     <td class='tdr' th:if="${book.copies>0}" style='color:green'>In Stock</td>
+     <td class='tdr' th:if="${book.copies==0}" style='color:red'>Out of Stock</td>
+     <td class='tdr'>
+      <a th:href="@{edit(bid=${book.bid})}">Edit |</a>
+      <a th:href="@{remove(bid=${book.bid})}" onclick='return confirm("Are you sure to remove?")'>Remove</a> 
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+   <div class='dvv'>
+     <a class='btl' href='add'>Add new book</a>
+     <a class='btl' href='/manager/managebooks' style='background-color:orange'>Back</a>
+  </div>
+  </div>
+  </form>
+ </body>
+ </html>

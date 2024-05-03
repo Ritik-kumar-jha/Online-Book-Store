@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<table style='width:100%'>
+    <tr>
+   	<td style='width:30%;font-size:1.8vw'>
+   		<label th:text="${pn}"></label>
+   		<label> of </label>
+   		<label th:text="${tp}"></label>
+   	</td>
+	<td style='width:40%;text-align: center'>
+    <a class='an' th:if="${pn>5}" th:href="@{/purchase/booklist(pn=${pn-1})}"><i class="fa fa-arrow-circle-left" style="font-size:2.2vw;color:blue"></i></a>
+    <a th:if="${tp<=5}" th:class="${pn==i?'anc':'an'}"  th:href='@{/purchase/booklist(pn=${i})}' th:each="i:${#numbers.sequence( 1,tp,1)}" th:text="${i}"></a>
+    <a th:if="${tp>5 and pn<=5}" th:class="${pn==i?'anc':'an'}"  th:href='@{/purchase/booklist(pn=${i})}' th:each="i:${#numbers.sequence( 1,5,1)}" th:text="${i}"></a>
+    <a th:if="${tp>5 and pn>5}" th:class="${pn==i?'anc':'an'}"  th:href='@{/purchase/booklist(pn=${i})}' th:each="i:${#numbers.sequence( 1,4,1)}" th:text="${i}"></a>
+    <a th:if="${tp>5 and pn>5}" th:href='@{/purchase/booklist(pn=${pn})}' class='anc' th:text="${pn}"></a>
+    <a th:if="${tp>5}" class='an' th:href="@{/purchase/booklist(pn=${pn+1})}" th:onclick="|return ${pn<tp}|">
+      <i class="fa fa-arrow-circle-right" style="font-size:2.2vw;color:blue"></i>
+    </a>
+    </td>
+   <td style='width:30%;text-align: right'>
+        <a class='btl' style='background-color:#00ABC8;color:white'  href='/user/searchbooks'>Search Books</a>
+    </td>
+    </tr>
+   </table>
+   </html>

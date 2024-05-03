@@ -1,0 +1,34 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+<div th:insert="/user/top"></div>
+<body class='bgi'>
+  <table border='1' class='tad' style='width:50%'>
+   <tr>
+    <th class='tatd hp' align="left">Book Id</th>
+    <td class='tatd dp' th:text="${book.bid}"></td>
+   </tr>
+   <tr>
+    <th class='tatd hp' align="left">Book Title</th>
+    <td class='tatd dp' th:text="${book.title}"></td>
+   </tr>
+   <tr>
+    <th class='tatd hp' align="left">Book Author</th>
+    <td class='tatd dp' th:text="${book.author}"></td>
+   </tr>
+   <tr>
+    <th class='tatd hp' align="left">Book Category</th>
+    <td class='tatd dp' th:text="${book.category}"></td>
+   </tr>
+   <tr>
+    <th class='tatd hp' align="left">Book Publisher</th>
+    <td class='tatd dp' th:text="${book.publisher}"></td>
+   </tr>
+   <tr>
+    <th class='tatd hp' align="left">Book Price</th>
+    <td class='tatd dp' th:text="${'&#8377;'+book.price}"></td>
+   </tr>
+  </table>
+  <div class='dvv'>
+   <button class='btr' onclick='history.back()' style='background-color:orange'>Go Back</button>
+  </div>
+</body>
+</html>

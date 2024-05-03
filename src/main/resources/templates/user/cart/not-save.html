@@ -1,0 +1,12 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+<body class='bgi'>
+ <div th:insert="/user/top"></div>
+ <div class='dv'>
+  <label style='color:red;font-size:2.5vw'>This book is already in cart</label>
+ </div>
+ <div class='dvv'>
+   <a href='/cart/cart-items' class='btr1'>View Cart</a>
+   <input type='button' style='background-color:#FFAA77' class='btr' onclick="history.back()" value='Add Other'>
+ </div>
+</body>
+</html>

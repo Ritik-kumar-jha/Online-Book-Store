@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:insert="/manager/top"></div>
+<head>
+ <link href='../../CSS/style.css' rel='stylesheet'>
+ <link href='../../CSS/login.css' rel='stylesheet'>
+ </head>
+<body class='bgi'>
+  <div align='center'>
+    
+    <div class='dvadmin' style='padding:4vw;width:50%'>
+     <table style="width:100%">
+     <tr>
+       <td class='tatd'>
+        <form>
+        <table style="width:100%"><tr>
+       		<td><label class='la'>Current date</label></td>
+       		<td style="width:20%"><a href='currentdate' class='btr1'>GO</a></td>
+        </tr></table>
+        </form>
+       </td>
+     </tr>
+     <tr>
+       <td class='tatd'>
+       <form action="selecteddate">
+         <table style="width:100%"><tr>
+         <td><label class='la'>Select date</label>
+         <input class='la' type='date' name="date" th:max="${dt}" required></td>
+       	 <td style="width:20%"><button class='btr'>GO</button></td>
+       	</tr></table> 
+       </form>
+       </td>
+     </tr>	
+     <tr>
+      <td class='tatd'>
+       <form action="fromandto">
+       <table style="width:100%"><tr>
+          <td><label class='la'>From:</label>
+          	<input class='la' type='date' th:max="${dt}" id="fr" name='fromdate' required>
+            <label class='la'>To:</label>
+          	<input class='la' type='date' th:max="${dt}" id="to" name='todate' required></td>
+          <td style="width:20%"><button class='btr' onclick="return checkDate()">GO</button></td>
+       </tr></table>
+       </form>
+      </td>
+     </tr>
+     </table>	
+    </div>
+  </div>
+  <div class='ddv'>
+   <input type='button' value='Back' class='btr' style='background-color:orange' onclick='history.back()'>
+  </div>
+ </body>
+ </html>

@@ -1,0 +1,50 @@
+<html   xmlns:th="http://www.thymeleaf.org">
+ <body class='bgi'>
+  <div th:insert="/manager/top"></div>
+  <div class='container'>
+  <div class='card'>
+  <div class='card-body'>
+  <div class='dvv' th:if="${list.empty}">
+   <label class='lah' style='color:red'>No book is out of stock</label>
+  </div>
+  <div th:if="${!list.empty}">
+  <table class='table'>
+   <thead>
+    <tr>
+     <th>Book</th>
+     <th>Title</th>
+     <th>Author</th>
+     <th class='tdr'>Category</th>
+     <th class='tdr'>Publisher</th>
+     <th>Copies</th>
+     <th>Price</th>
+     <th>Stock</th>
+     <th style='color:magenta'>Action</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr th:each="book:${list}">
+     <td th:text="${book.bid}"></td>
+     <td th:text="${book.title}"></td>
+     <td th:text="${book.author}"></td>
+     <td class='tdr'><a th:href="@{/manager/category/details(cid=${book.category})}" th:text="${book.category}"></a></td>
+     <td class='tdr'><a th:href="@{/manager/publisher/details(pid=${book.publisher})}" th:text="${book.publisher}"></a></td>
+     <td th:text="${book.copies}"></td>
+     <td th:text="${book.price}"></td>
+     <td style='color:red'>Out of Stock</td>
+     <td>
+      <a th:href="@{/manager/book/edit(bid=${book.bid})}">Edit |</a>
+      <a th:href="@{/manager/removebook(bid=${book.bid})}" onclick='return confirm("Are you sure to remove?")'>Remove</a> 
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  </div>
+  <div class='dvv'>
+   <a class='btl' href='/manager/managebooks' style='background-color:orange'>Back</a>
+  </div>
+  </div>
+  </div>
+  </div>
+ </body>
+ </html>

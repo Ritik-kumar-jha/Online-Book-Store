@@ -1,0 +1,38 @@
+<html   xmlns:th="http://www.thymeleaf.org">
+ <body class='bgi'>
+  <div th:insert="/user/top"></div>
+  <hr>
+  <div class='container'>
+  <div class='card col-md-10 mx-auto'>
+  <div class='card-body'>
+  <div class='dvv' th:if="${list.empty}">
+   <label class='lah' style='color:red'>Not purchased any book yet</label>
+  </div>
+  <div th:if="${!list.empty}" class='scrollit'>
+  <table class='table table-hover table-bordered laa'>
+   <thead>
+    <tr>
+     <th>Book Id</th>
+     <th>No of Copies</th>
+     <th>Total cost</th>
+     <th>Transaction Date</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr th:each="t:${list}">
+     <td><a th:href="@{/purchase/bookdetails(bid=${t.bookid})}" th:text="${t.bookid}" title='Click to see details of book'></a></td>
+     <td th:text="${t.quantity}"></td>
+     <td th:text="${'&#8377;'+t.price*t.quantity}"></td>
+     <td th:text="${t.date}"></td>
+    </tr>
+   </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+  <div class='dvv'>
+   	<a href='/user/home' class='btl oc'>Home</a>
+  </div>
+  </div>
+ </body>
+ </html>

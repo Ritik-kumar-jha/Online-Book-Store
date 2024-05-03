@@ -1,0 +1,38 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+<div th:insert="/user/top"></div>
+<body class='bgi'>
+ <div class='dvv' style='margin-bottom:1vw'>
+   <label th:text="${msg}" style='color:white;font-size:2vw'></label>
+   <a href='/profile/profile' th:if='${msg!=null}' class='btl' style='background-color:orange'>Back</a>
+ </div>
+<form action="/profile/updateprofile" method="post" th:object="${user}">
+ <div class='dvt' style="background-color:white; ">
+  <table class='tae'>
+     <tr>
+       	<td class='tatd'>User id</td>
+       	<td class='tatd'>
+       	<label class='la' th:text="${user.userid}"></label>
+       	<input class='tb' type='hidden' th:field="*{userid}" required/>
+        <input type='hidden' th:field="*{password}" name="password"/></td>
+     </tr>
+     <tr>
+       	<td class='tatd'>Edit name</td>
+       	<td class='tatd'><input class='tb' type='text' th:field="*{name}" id='name' required/></td>
+     </tr>
+     <tr>
+       	<td class='tatd'>Edit phone number</td>
+       	<td class='tatd'><input class='tb' type='text' th:field="*{phone}" id='phone' required/></td>
+     </tr>
+     <tr>
+       	<td class='tatd'>Edit address</td>
+       	<td class='tatd'><input class='tb' type='text' th:field="*{address}" id='address' required/></td>
+     </tr>
+     <tr>
+       	<td class='tatd' colspan="2" align="center"><button class='btr'>Update Profile</button>
+       	<a href='/profile/profile' class='btr' style='background-color:orange'>Back</a></td>
+     </tr>
+    </table>
+    </div>
+   </form>
+ </body>
+</html>

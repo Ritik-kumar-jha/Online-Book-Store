@@ -1,0 +1,56 @@
+<html   xmlns:th="http://www.thymeleaf.org">
+ <head>
+  <link href='../../CSS/style.css' rel='stylesheet'>
+  <link href='../../CSS/bootstrap.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ </head>
+ <div th:insert="/user/top"></div>
+ <body class='bgi'>
+  <form>
+  <div style='text-align:center'>
+   <label class='la' style='color:green;font-weight:bold'>Book list by&nbsp;</label>
+   <label class='la' style='color:green;font-weight:bold' th:text="${by}"></label>
+  </div> 
+  <div class='container'>
+    <div class='card'>
+      <div class='card-body'>
+      <div class='dvv' th:if="${list.empty}">
+   		<label class='lah' style='color:red'>There is no book in store</label>
+      </div>
+      <div th:if="${!list.empty}" class='scrollit'>
+        <table class='table laa'>
+   		 <thead>
+    		<tr><th>Book</th><th>Title</th><th>Author</th><th>Category</th><th>Publisher</th>
+    		<th>Copies</th><th>Price</th><th>Stock</th>
+    		<th style='color:magenta'>Order</th>
+    		<th style='color:magenta'>Add</th></tr>
+         </thead>
+         <tbody>
+    		<tr th:each="book:${list}">
+     			<td th:text="${book.bid}"></td>
+     			<td th:text="${book.title}"></td>
+     			<td th:text="${book.author}"></td>
+     			<td class='tdr'><a th:href="@{/manager/category/details(cid=${book.category})}" th:text="${book.category}"></a></td>
+     			<td class='tdr'><a th:href="@{/manager/publisher/details(pid=${book.publisher})}" th:text="${book.publisher}"></a></td>
+          			<td th:text="${book.copies}"></td>
+     			<td th:text="${'&#8377;'+book.price}"></td>
+     			<td th:if="${book.copies>0}" style='color:green'>In Stock</td>
+     			<td th:if="${book.copies==0}" style='color:red'>Out of Stock</td>
+     			<td th:if="${book.copies>0}"><a th:href="@{/purchase/buybook(bid=${book.bid})}">Order</a></td>
+      			<td th:if="${book.copies>0}" align="center">
+      				<a th:href="@{/cart/add(bid=${book.bid})}" title='Click to add into cart'><i class='fa fa-shopping-cart'></i></a>
+      			</td>
+      			<td th:if="${book.copies==0}" align="center" colspan="2"><label>Coming soon</label></td>
+    		</tr>
+   		 </tbody>
+  	   </table>
+     </div>
+     <div class='dvv'>
+     	<a class='btl' href='/user/searchbooks' style='background-color:orange'>Back</a>
+  	 </div>
+    </div>
+   </div>
+  </div>
+  </form>
+ </body>
+ </html>

@@ -1,0 +1,26 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+<body class='bgi'>
+ <div th:insert="/user/top"></div>
+ <div align="center">
+<div class='dv-card'> 
+ <div class='dvv'>
+  <label class='lah' style='color:green'>Enter OTP to continue</label>
+ </div>
+ <div class='dvv'>
+  <label class='lah' style='color:black'><b>OTP</b></label><br> 
+  <label id="gotp" class='lah' onmousedown="return false" onselect="return false" style='color:black' th:text="${otpn}"></label>
+ </div>
+ <form action="/payment/card/single-success" method="post">
+   <div class='dvv'>
+     <input type="hidden" name='cardno' th:value="${cardno}">
+     <input type="hidden" name='total' th:value="${paid}">
+     <input type='text' id='eotp' onkeypress="return allowDisgits(event,this,4)" placeholder='Type OTP' style='width:8vw'>
+   </div>
+   <div class='dvv'>
+     <button class='btr' onclick="return checkOtp()">Continue</button>
+   </div>
+ </form>
+ </div>
+ </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html   xmlns:th="http://www.thymeleaf.org">
+ <body class='bgi'>
+  <form>
+  <div th:insert="/user/top"></div>
+  <div class='container'>
+  <div class='card'>
+  <div class='card-body'>
+    <div class='dvv' th:if="${list.empty}">
+      <label class='lah' style='color:red'>Sorry you don't have any card yet</label>
+    </div>
+    <div th:if="${!list.empty}">
+    <table class='table laa'>
+     <thead>
+      <tr>
+     	<th class='tdr'>Name on Card</th>
+     	<th class='tdr'>Card no</th>
+     	<th class='tdr'>Expiry month</th>
+     	<th class='tdr'>Expiry year</th>
+     	<th class='tdr'>CVV no</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr th:each="card:${list}">
+     	<td class='tdr' th:text="${card.holder}"></td>
+     	<td class='tdr' th:text="${card.card}"></td>
+     	<td class='tdr' th:text="${card.month}"></td>
+     	<td class='tdr' th:text="${card.year}"></td>
+     	<td class='tdr' th:text="${card.cvv}"></td>
+       </tr>
+       </tbody>
+      </table>
+    </div>
+    </div>
+   </div>
+    <div class='dvv'>
+     <a class='btl' href='add'>Apply for Card</a>
+     <input type='button' value='Back' class='btr' style='background-color:orange' onclick='history.back()'>
+  </div>
+   </div>
+  </form>
+ </body>
+ </html>

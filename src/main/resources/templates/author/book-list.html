@@ -1,0 +1,48 @@
+<html   xmlns:th="http://www.thymeleaf.org">
+ <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ </head>
+ <div th:insert="/user/top"></div>
+ <body class='bgi'>
+  <form action="/author/booklist">
+  <div class='container'>
+    <div class='card'>
+      <div class='card-body'>
+      <div class='dvv' th:if="${list.empty}">
+   		<label class='lah' style='color:red'>There is no book in store</label>
+   		<div style='margin-top:1vw;text-align: center'>
+    	  <input type='button' style='background-color:orange' class='btr' onclick="history.back()" value='Back'>
+   		</div>
+      </div>
+      <div th:if="${!list.empty}">
+        <table class='table'>
+   		 <thead>
+    		<tr><th>Book Id</th><th>Book Title</th><th>Book Author</th><th>No of Copies</th><th>Book Price</th>
+     		<th>Stock</th><th style='color:magenta'>Action</th></tr>
+         </thead>
+         <tbody>
+    		<tr th:each="book:${list}">
+     			<td th:text="${book.bid}"></td>
+     			<td th:text="${book.title}"></td>
+     			<td th:text="${book.author}"></td>
+     			<td th:text="${book.copies}"></td>
+     			<td th:text="${book.price}"></td>
+     			<td th:if="${book.copies>0}" style='color:green'>In Stock</td>
+     			<td th:if="${book.copies==0}" style='color:red'>Out of Stock</td>
+     			<td>
+      				<a th:if="${book.copies>0}" th:href="@{/purchase/buybook(bid=${book.bid})}">Buy Book</a>
+      				<label th:if="${book.copies==0}">Coming soon</label>
+     			</td>
+    		</tr>
+   		 </tbody>
+  	   </table>
+     </div>
+    </div>
+   </div>
+   <div th:if="${!list.empty}" style='margin-top:1vw;text-align: center'>
+    <a href='/user/home' class='btl'>Back to Home</a>
+   </div>
+  </div>
+  </form>
+ </body>
+ </html>

@@ -1,0 +1,31 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+<div th:insert="/user/top"></div>
+<body class='bgi'>
+ <div class='dvv'>
+   <a href='editprofile'  class='btl'>Edit Profile</a>
+   <a href='changepass'  class='btl'>Change Password</a>
+  </div>
+  <hr>
+  <table border='1' class='tad'>
+   <tr>
+    <th class='tatd hp' align="left">User id</th>
+    <td class='tatd dp' th:text="${user.userid}"></td>
+   </tr>
+   <tr>
+    <th class='tatd hp' align="left">User name</th>
+    <td class='tatd dp' th:text="${user.name}"></td>
+   </tr>
+   <tr>
+    <th class='tatd hp' align="left">User phone</th>
+    <td class='tatd dp' th:text="${user.phone}"></td>
+   </tr>
+   <tr>
+    <th class='tatd hp' align="left">User Address</th>
+    <td class='tatd dp' th:text="${user.address}"></td>
+   </tr>
+  </table>
+  <div class='dvv'>
+   <a class='btl' href='/user/home' style='background-color:orange'>Home</a>
+  </div>
+</body>
+</html>

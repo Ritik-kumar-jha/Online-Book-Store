@@ -1,0 +1,25 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+<body class='bgi'>
+  <div th:insert="/manager/top"></div>
+  <div class='dvv'>
+   <label class='lah'>Category Details</label>
+  </div>
+  <table border='1' class='tad' style='width:auto'>
+   <tr>
+    <td class='tatd hp'>Category Id</td>
+    <td class='tatd dp' th:text="${cat.cat_id}"></td>
+   </tr>
+   <tr>
+    <td class='tatd hp'>Category</td>
+    <td class='tatd dp' th:text="${cat.category}"></td>
+   </tr>
+   <tr>
+    <td class='tatd hp'>Description</td>
+    <td class='tatd dp' th:text="${cat.description}"></td>
+   </tr>
+  </table>
+  <div class='dvv'>
+   <button class='btr' style='background-color:orange' onclick='history.back()'>Back</button>
+  </div>
+</body>
+</html>

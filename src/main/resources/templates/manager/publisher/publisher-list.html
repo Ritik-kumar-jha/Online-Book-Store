@@ -1,0 +1,45 @@
+<html   xmlns:th="http://www.thymeleaf.org">
+ <body class='bgi'>
+  <form action='/author/booklist'>
+  <div th:insert="/manager/top"></div>
+  <div class='container'>
+  <div class='card'>
+  <div class='card-body'>
+    <div class='dvv' th:if="${list.empty}">
+      <label class='lah' style='color:green'>Sorry publisher list is empty</label>
+    </div>
+    <div th:if="${!list.empty}" class='scrollit'>
+    <table class='table'>
+     <thead>
+      <tr>
+     	<th class='tdr'>Pub Id</th>
+     	<th class='tdr'>Publisher</th>
+     	<th class='tdr'>Address</th>
+     	<th class='tdr'>Email</th>
+     	<th class='tdr' style='color:magenta'>Action</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr th:each="pub:${list}">
+     	<td class='tds' th:text="${pub.pub_id}"></td>
+     	<td class='tdr' th:text="${pub.publisher}"></td>
+     	<td class='tdr' th:text="${pub.address}"></td>
+     	<td class='tdr' th:text="${pub.email}"></td>
+	    <td class='tdr'>
+      		<a th:href="@{edit(pid=${pub.pub_id})}">Edit |</a>
+     		<a th:href="@{remove(pid=${pub.pub_id})}" onclick='return confirm("Are you sure to remove?")'>Remove</a> 
+     	</td>
+       </tr>
+       </tbody>
+      </table>
+    </div>
+    </div>
+   </div>
+    <div class='dvv'>
+     <a class='btl' href='add'>Add new Publisher</a>
+     <a class='btl' href='/manager/managebooks' style='background-color:orange'>Back</a>
+  </div>
+   </div>
+  </form>
+ </body>
+ </html>

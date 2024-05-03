@@ -1,0 +1,59 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<link href='../../CSS/style.css' rel='stylesheet'>
+  <link href='../../CSS/bootstrap.min.css' rel='stylesheet'>
+</head>
+<body class='bgi'>
+ <div th:insert="/manager/top"></div>
+ <div class='container'>
+ <div class='card mx-auto col-md-10'>
+  <div class='card-body'>
+   <form action="editsave" method="post">
+   <div class='row form-group'>
+      <div class='col-md-10'>
+       	<label for="title">Book id</label><span> *</span>
+       	<input type='text' readonly="readonly" name="bid" id='bid' th:value="${book.bid}" class='form-control' required/>
+      </div>
+    </div>
+   <div class='row form-group'>
+      <div class='col-md-6'>
+       	<label for="title">Edit book title</label><span> *</span>
+       	<input type='text' name="title" id='title' th:value="${book.title}" class='form-control' required/>
+      </div>
+      <div class='col-md-6'>
+      	<label for="author">Edit author name</label><span> *</span>
+       	<input type='text' name="author" id='author' th:value="${book.author}" class='form-control' required/>
+     </div>
+    </div>
+    <div class='row form-group'>
+      <div class='col-md-6'>
+       	<label for="category">Edit category id</label><span> *</span>
+       	<input type='text' name="category" id='category' th:value="${book.category}" class='form-control' required/>
+      </div>
+      <div class='col-md-6'>
+      	<label for="publisher">Edit publisher id</label><span> *</span>
+       	<input type='text' name="publisher" id='publisher' th:value="${book.publisher}" class='form-control' required/>
+     </div>
+    </div>
+    <div class='row form-group'>
+     <div class='col-md-6'>
+       	<label for="copies">Edit number of copies</label><span> *</span>
+       	<input type='number' min="1"  name="copies" id='copies' th:value="${book.copies}" class='form-control' required/>
+      </div>
+      <div class='col-md-6'>
+      	<label for="price">Edit price</label>
+       	<input type='text' name="price" id='price' th:value="${book.price}" class='form-control' required/>
+     </div>
+    </div>
+    <div class='row form-group'>
+     <div class='col-md-10'>
+       	<button class='btr'>Update</button>
+       	<input type='button' value='cancel' class='btr' style='background-color:orange' onclick='history.back()'>
+     </div>
+    </div>
+   </form>
+  </div>
+ </div>
+</div>
+</body>
+</html>
